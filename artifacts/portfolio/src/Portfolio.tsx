@@ -81,12 +81,8 @@ function Gate({ onUnlock }: { onUnlock: () => void }) {
   return (
     <div id="gate" role="dialog" aria-label="Password required" ref={gateRef}>
       <div className="inner">
-        <div className="rule">
-          <span className="tag">DEVIN FINCH</span>
-        </div>
-        <div className="big">Portfolio</div>
-        <div className="art">
-          <img src={A('gate.png')} alt="" onError={removeParent} />
+        <div className="art art-splash">
+          <img src={A('gate.png')} alt="OHOKBB — Betrayal" onError={removeParent} />
         </div>
         <div className="ask">Insert Password:</div>
         <input
