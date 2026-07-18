@@ -115,6 +115,18 @@ export default function Portfolio() {
     return () => document.body.classList.remove('locked');
   }, [locked]);
 
+  // Deep links: the anchor targets only exist after React renders, and
+  // images reflow the page as they load — so re-anchor a few times while
+  // the layout settles.
+  useEffect(() => {
+    if (locked || !window.location.hash) return;
+    const id = window.location.hash.slice(1);
+    const go = () =>
+      document.getElementById(id)?.scrollIntoView({ behavior: 'instant' });
+    const timers = [200, 700, 1500].map((ms) => window.setTimeout(go, ms));
+    return () => timers.forEach((t) => window.clearTimeout(t));
+  }, [locked]);
+
   const tickerLine = (
     <p>
       <span>Polymarket</span>
@@ -163,13 +175,20 @@ export default function Portfolio() {
             <a href="#ccp">Club Cabana Panic</a>
             <a href="#proxima">Proxima CRO</a>
             <a href="#blackmass">Column Bay / Black Mass</a>
-            <a href="#ohokbb">OHOKBB</a>
             <a href="#receipts">The Receipts</a>
           </nav>
           <div className="sb-links">
             <a href="mailto:devin@ohokbb.com">Email</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Resume</a>
+            <a
+              href="https://www.linkedin.com/in/devin-finch-creativedirector"
+              target="_blank"
+              rel="noopener"
+            >
+              LinkedIn
+            </a>
+            <a href={A('Devin_Finch_Resume.docx')} download>
+              Resume
+            </a>
           </div>
           <div className="sb-copy">
             © 2026 Devin Finch.
@@ -244,8 +263,9 @@ export default function Portfolio() {
               Full ownership of the daily newsletter template — layout system,
               editorial imagery through a custom AI composition pipeline, and
               hand-coded production HTML that survives every email client. Plus
-              the signup-flow series: eight chrome-rendered hero concepts,
-              live-market modules, countdown mechanics.{' '}
+              the signup-flow series — eight chrome-rendered hero concepts,
+              live-market modules, countdown mechanics — and the newsletter
+              artwork for The Oracle.{' '}
               <b>Shipped as the publication's standing daily format.</b>
             </p>
             <div className="grid g-hero">
@@ -652,7 +672,7 @@ export default function Portfolio() {
               Tomorrow podcast. Taught branding workshops that helped 5+
               startups toward rebrands and raises.
             </p>
-            <div className="grid g-3">
+            <div className="grid g-hero">
               <div className="slot">
                 <Ticks />
                 <img
@@ -673,7 +693,7 @@ export default function Portfolio() {
                 <Ticks />
                 <img
                   src={A('proxima-detail-2.jpg')}
-                  alt="Proxima collateral"
+                  alt="Proxima brand strip"
                   onError={removeSelf}
                 />
               </div>
@@ -758,48 +778,16 @@ export default function Portfolio() {
                 />
               </div>
             </div>
-          </section>
-
-          {/* ============ OHOKBB ============ */}
-          <a className="row p-red" href="#ohokbb" aria-label="Case: OHOKBB">
-            <span className="chip">Label</span>
-            <span className="mq">
-              <span className="mq-inner">
-                <span>OHOKBB — The Personal Imprint</span>
-                <span>OHOKBB — The Personal Imprint</span>
-              </span>
-            </span>
-          </a>
-          <section className="case p-red" id="ohokbb">
-            <div className="kicker">
-              <em>Imprint · OHOKBB Studio</em>
-              <em>Role · Founder</em>
-              <em>2025–Now</em>
-            </div>
-            <h2>The personal imprint. Where the experiments happen first.</h2>
-            <p className="lede">
-              Apparel, kiosk, and content engine under one watchful eye — plus
-              Club Cabana Panic, the newsletter where the theory gets written
-              down.
-            </p>
-            <div className="grid g-2">
-              <div className="slot tall">
-                <Ticks />
-                <img
-                  src={A('ohokbb-hero.jpg')}
-                  alt="OHOKBB site"
-                  onError={removeSelf}
-                />
-              </div>
-              <div className="slot tall">
-                <Ticks />
-                <img
-                  src={A('ohokbb-detail.jpg')}
-                  alt="OHOKBB kiosk"
-                  onError={removeSelf}
-                />
-              </div>
-            </div>
+            <nav className="linklist" aria-label="BLACK MASS link">
+              <a
+                href="https://columnbay.com/blackmass"
+                target="_blank"
+                rel="noopener"
+              >
+                <span>BLACK MASS — columnbay.com/blackmass</span>
+                <span className="arrow">→</span>
+              </a>
+            </nav>
           </section>
 
           {/* ============ RECEIPTS ============ */}
