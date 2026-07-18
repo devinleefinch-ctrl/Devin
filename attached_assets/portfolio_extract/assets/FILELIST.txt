@@ -1,0 +1,29 @@
+DROP YOUR FILES IN THIS FOLDER. Names must match EXACTLY (case-sensitive).
+
+IMAGES (your existing exports, no renaming needed):
+allth-app-1.jpg          allth-app-2.jpg          allth-hero.jpg
+believe-cover-1.jpg      believe-cover-2.jpg      believe-detail.jpg
+believe-detail-2.jpg     believe-detail-3.jpg     believe-hero.jpg
+blackmass-hero.jpg       CCP-detail-1.jpg         CCP-detail-2.jpg
+CCP-hero.jpg             column-1.jpg             columb-2.jpg
+columb-3.jpg             columb-4.jpg             mama-detail.jpg
+mama-hero.jpg            mama-hero-2.jpg          polymarket-detail.jpg
+polymarket-emails.jpg    polymarket-hero.jpg      proxima-detail-1.jpg
+proxima-detail-2.jpg     proxima-hero.jpg         saintsgride-1.jpg
+
+VIDEOS (your exact filenames — just drop them in as-is):
+Believe_JUN2026-EIC_1.mp4
+YoungWashington_Reel_Update.mp4
+MAMA_MVP_01 (1).mp4
+DevinFinch_reel.mp4
+
+NOTE: the cloud icons in Finder mean these are in iCloud, not on disk.
+Open each once (or right-click > Download Now) so they're fully local
+BEFORE dragging into Replit, or the upload will fail/stub.
+
+OPTIONAL (skip = section degrades gracefully):
+gate.png              <- balaclava art for the password screen
+ccp-preview.mp4       <- vertical CCP preview card video
+ohokbb-hero.jpg / ohokbb-detail.jpg
+
+Delete this file after you're done. Do not upload it thinking it's required.

@@ -1,6 +1,6 @@
-# [Project name]
+# Devin Finch Portfolio (devin-finch.com)
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Password-gated single-page portfolio site for Devin Finch, creative director — ported faithfully from a user-supplied finished HTML design.
 
 ## Run & Operate
 
@@ -22,7 +22,9 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/portfolio/` — the site (react-vite, served at `/`). Page markup: `src/Portfolio.tsx`; all styling: `src/portfolio.css` (verbatim from the user's original design, incl. embedded F37 Judge woff2). Scaffold's `index.css`/shadcn components are unused.
+- `artifacts/portfolio/public/assets/` — media drop folder. Filenames must match FILELIST exactly (case-sensitive, e.g. `polymarket-hero.jpg`, `MAMA_MVP_01 (1).mp4`). Missing files degrade gracefully (onError removes the slot).
+- `attached_assets/portfolio_extract/` — original uploaded HTML source of truth.
 
 ## Architecture decisions
 
