@@ -177,7 +177,8 @@ body.locked{overflow:hidden}
 
 /* natural image display — show the full artwork, never crop or upscale */
 .grid{align-items:start}
-.slot img{position:static;display:block;width:auto;max-width:100%;height:auto;margin:0 auto}
+.slot img{position:static;display:block;width:100%;height:auto}
 .slot:has(img){min-height:0}
 .saintsbar .slot:has(img){min-height:0}
 .slot.tall:has(img){min-height:0}
+.grid > :only-child{grid-column:1/-1}

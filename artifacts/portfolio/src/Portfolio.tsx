@@ -581,11 +581,11 @@ export default function Portfolio() {
                   muted
                   loop
                   playsInline
-                  onError={removeSelf}
+                  onError={removeParent}
                 ></video>
               </div>
               <div>
-                <div className="slot" style={{ minHeight: 300 }}>
+                <div className="slot">
                   <Ticks />
                   <img
                     src={A('CCP-hero.jpg')}
