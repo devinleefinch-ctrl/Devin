@@ -170,7 +170,6 @@ export default function Portfolio() {
             <span>The Work</span>
             <a href="#polymarket">Polymarket</a>
             <a href="#allthenticate">Allthenticate</a>
-            <a href="#mama">MAMA Magazine</a>
             <a href="#believe">Believe! Journal</a>
             <a href="#ccp">Club Cabana Panic</a>
             <a href="#proxima">Proxima CRO</a>
@@ -371,68 +370,6 @@ export default function Portfolio() {
               Identity → web → app UI → investor deck → trade show floor. One
               continuous system.
             </p>
-          </section>
-
-          {/* ============ MAMA ============ */}
-          <a className="row p-lav" href="#mama" aria-label="Case: MAMA Magazine">
-            <span className="chip">Case</span>
-            <span className="mq">
-              <span className="mq-inner">
-                <span>MAMA Magazine — Editorial Art Direction</span>
-                <span>MAMA Magazine — Editorial Art Direction</span>
-              </span>
-            </span>
-          </a>
-          <section className="case p-lav" id="mama">
-            <div className="kicker">
-              <em>Client · MAMA Magazine</em>
-              <em>Role · Lead Art Director</em>
-              <em>2025–Now</em>
-            </div>
-            <h2>A print-brained magazine identity, built at digital speed.</h2>
-            <p className="lede">
-              Kodachrome grain, jewel tones, editorial systems that hold
-              together from cover to carousel.
-            </p>
-            <div className="grid g-3">
-              <div className="slot tall">
-                <Ticks />
-                <img
-                  src={A('mama-hero.jpg')}
-                  alt="MAMA Magazine spread"
-                  onError={removeSelf}
-                />
-              </div>
-              <div className="slot tall">
-                <Ticks />
-                <img
-                  src={A('mama-hero-2.jpg')}
-                  alt="MAMA Magazine"
-                  onError={removeSelf}
-                />
-              </div>
-              <div className="slot tall">
-                <Ticks />
-                <img
-                  src={A('mama-detail.jpg')}
-                  alt="MAMA editorial detail"
-                  onError={removeSelf}
-                />
-              </div>
-            </div>
-            <div className="grid g-vid">
-              <div className="slot vslot">
-                <Ticks />
-                <video
-                  src={A('MAMA_MVP_01 (1).mp4')}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  onError={removeGrandparent}
-                ></video>
-              </div>
-            </div>
           </section>
 
           {/* ============ BELIEVE ============ */}
