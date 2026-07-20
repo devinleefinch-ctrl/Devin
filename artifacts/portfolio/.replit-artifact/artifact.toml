@@ -7,7 +7,7 @@ router = "path"
 
 [[services]]
 name = "web"
-paths = [ "/" ]
+paths = []
 localPort = 21113
 
 [services.development]
@@ -15,12 +15,6 @@ run = "pnpm --filter @workspace/portfolio run dev"
 
 [services.production]
 build = [ "pnpm", "--filter", "@workspace/portfolio", "run", "build" ]
-serve = "static"
-publicDir = "artifacts/portfolio/dist/public"
-
-[[services.production.rewrites]]
-from = "/*"
-to = "/index.html"
 
 [services.env]
 PORT = "21113"

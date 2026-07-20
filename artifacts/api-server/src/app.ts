@@ -1,8 +1,10 @@
 import express, { type Express } from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import pinoHttp from "pino-http";
 import router from "./routes";
 import { logger } from "./lib/logger";
+import { portfolioGateMiddleware } from "./middlewares/portfolio-gate";
 
 const app: Express = express();
 
@@ -46,11 +48,18 @@ app.use(
       // rather than a server error.
       callback(null, !origin || allowedOrigins.has(origin));
     },
+    credentials: true,
   }),
 );
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", router);
+
+// Portfolio gate — must come after /api so the auth endpoints are reachable.
+// Unauthenticated requests receive a standalone gate HTML page; the portfolio
+// bundle and assets are never sent to visitors without a valid session cookie.
+app.use("/", portfolioGateMiddleware());
 
 export default app;

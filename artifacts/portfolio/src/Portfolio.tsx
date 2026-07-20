@@ -3,8 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 const A = (f: string) =>
   import.meta.env.BASE_URL + 'assets/' + encodeURIComponent(f);
 
-const HASH =
-  'cf6a32fc8621ec75fbe509c149afaf8cbc7bc1e7190ebafa2fddc5d532fdde6f';
+const API = (p: string) => import.meta.env.BASE_URL + 'api/' + p;
 
 function removeSelf(e: React.SyntheticEvent<HTMLElement>) {
   e.currentTarget.remove();
@@ -42,32 +41,18 @@ function Gate({ onUnlock }: { onUnlock: () => void }) {
     const v = input.value.trim();
     if (!v) return;
     let ok = false;
-    if (window.crypto && crypto.subtle) {
-      try {
-        const buf = await crypto.subtle.digest(
-          'SHA-256',
-          new TextEncoder().encode(v),
-        );
-        const hex = Array.from(new Uint8Array(buf))
-          .map((b) => b.toString(16).padStart(2, '0'))
-          .join('');
-        ok = hex === HASH;
-      } catch {
-        ok = false;
-      }
-    } else {
-      let x = 5381;
-      for (let i = 0; i < v.length; i++) {
-        x = ((x * 33) + v.charCodeAt(i)) >>> 0;
-      }
-      ok = x === 2084910241;
+    try {
+      const res = await fetch(API('portfolio/unlock'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ password: v }),
+      });
+      ok = res.ok;
+    } catch {
+      ok = false;
     }
     if (ok) {
-      try {
-        sessionStorage.setItem('dfok', '1');
-      } catch {
-        /* ignore */
-      }
       onUnlock();
     } else {
       gate.classList.remove('deny');
@@ -105,13 +90,23 @@ function Gate({ onUnlock }: { onUnlock: () => void }) {
 }
 
 export default function Portfolio() {
-  const [locked, setLocked] = useState(() => {
-    try {
-      return sessionStorage.getItem('dfok') !== '1';
-    } catch {
-      return true;
-    }
-  });
+  const [locked, setLocked] = useState(true);
+
+  // Ask the server whether this browser already holds a valid session.
+  useEffect(() => {
+    let cancelled = false;
+    fetch(API('portfolio/session'), { credentials: 'include' })
+      .then((res) => (res.ok ? res.json() : { unlocked: false }))
+      .then((data: { unlocked?: boolean }) => {
+        if (!cancelled && data.unlocked) setLocked(false);
+      })
+      .catch(() => {
+        /* stay locked */
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     document.body.classList.toggle('locked', locked);
