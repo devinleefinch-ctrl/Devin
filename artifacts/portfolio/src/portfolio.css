@@ -182,3 +182,5 @@ body.locked{overflow:hidden}
 .saintsbar .slot:has(img){min-height:0}
 .slot.tall:has(img){min-height:0}
 .grid > :only-child{grid-column:1/-1}
+#gate .go{display:inline-block;margin-top:22px;padding:9px 34px;background:transparent;border:2.5px solid #0B0B0B;color:#0B0B0B;font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+#gate .go:hover{background:#0B0B0B;color:#F7F5F0}

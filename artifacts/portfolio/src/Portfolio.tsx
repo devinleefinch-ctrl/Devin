@@ -96,6 +96,9 @@ function Gate({ onUnlock }: { onUnlock: () => void }) {
             if (e.key === 'Enter') check();
           }}
         />
+        <button type="button" className="go" onClick={check}>
+          Enter&nbsp;→
+        </button>
       </div>
     </div>
   );
