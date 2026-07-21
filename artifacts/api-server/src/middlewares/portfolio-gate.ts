@@ -56,37 +56,43 @@ const GATE_HTML = `<!DOCTYPE html>
 <title>Devin Finch — Portfolio</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:#0d0d0d;color:#f0ede6;font-family:'Space Mono',monospace,sans-serif;
-    display:flex;align-items:center;justify-content:center;min-height:100dvh}
-  .wrap{width:min(360px,90vw);display:flex;flex-direction:column;gap:1.25rem}
-  h1{font-size:1rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;
-    color:#888;margin-bottom:.25rem}
-  p{font-size:.85rem;color:#555;letter-spacing:.03em}
-  input{width:100%;padding:.7rem .9rem;background:#1a1a1a;border:1px solid #333;
-    color:#f0ede6;font-family:inherit;font-size:.95rem;border-radius:3px;outline:none}
-  input:focus{border-color:#666}
-  button{padding:.7rem 1.2rem;background:#f0ede6;color:#0d0d0d;border:none;
-    font-family:inherit;font-size:.9rem;font-weight:700;letter-spacing:.06em;
-    cursor:pointer;border-radius:3px;text-transform:uppercase}
-  button:hover{background:#fff}
-  .err{font-size:.8rem;color:#c44;letter-spacing:.03em;min-height:1.1rem}
-  .row{display:flex;gap:.75rem}
-  .row input{flex:1}
+  body{background:#F7F5F0;color:#0B0B0B;font-family:ui-monospace,Menlo,Consolas,'Courier New',monospace;
+    display:flex;align-items:center;justify-content:center;min-height:100dvh;padding:24px}
+  .wrap{width:min(760px,94vw);text-align:center}
+  .rule{display:flex;align-items:center;margin-bottom:6px}
+  .rule::before,.rule::after{content:"";flex:1;height:3px;background:#0B0B0B}
+  .tag{border:2.5px solid #0B0B0B;padding:3px 16px;font-weight:700;font-size:14px;letter-spacing:.18em}
+  h1{font-family:Impact,'Arial Black',sans-serif;font-weight:900;font-size:clamp(64px,14vw,150px);
+    line-height:.92;letter-spacing:.01em;text-transform:uppercase}
+  .ask{font-family:Georgia,'Times New Roman',serif;font-size:20px;letter-spacing:.06em;margin-top:40px;text-transform:uppercase}
+  input{display:block;margin:16px auto 0;background:transparent;border:0;border-bottom:2.5px dashed #0B0B0B;
+    font-family:inherit;font-size:18px;letter-spacing:.22em;text-align:center;color:#0B0B0B;
+    padding:6px 4px;width:min(300px,80vw);outline:none}
+  button{display:inline-block;margin-top:22px;padding:9px 34px;background:transparent;border:2.5px solid #0B0B0B;
+    color:#0B0B0B;font-family:inherit;font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+  button:hover{background:#0B0B0B;color:#F7F5F0}
+  button:disabled{opacity:.5;cursor:default}
+  .err{font-size:12px;color:#B3261E;letter-spacing:.06em;min-height:1.2em;margin-top:12px}
+  .blurb{font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.55;color:rgba(11,11,11,.78);
+    max-width:54ch;margin:30px auto 0}
+  .blurb a{color:#0B0B0B}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div>
-    <h1>Devin Finch</h1>
-    <p>Portfolio access required</p>
-  </div>
-  <div>
-    <div class="row">
-      <input id="pw" type="password" placeholder="Password" autocomplete="off" spellcheck="false" aria-label="Password">
-      <button id="btn" type="button">Enter →</button>
-    </div>
+  <div class="rule"><span class="tag">DEVIN FINCH</span></div>
+  <h1>Portfolio</h1>
+  <form id="f">
+    <div class="ask">Insert Password:</div>
+    <input id="pw" type="password" autocomplete="off" spellcheck="false" aria-label="Password">
+    <button id="btn" type="submit">Enter →</button>
     <div class="err" id="err" aria-live="polite"></div>
-  </div>
+  </form>
+  <p class="blurb">Creative direction &amp; cultural strategy for founders, families, and platforms
+  that move culture. Polymarket. The Believe! Journal. MAMA Magazine. Shane Gillis. Azealia Banks.
+  Writing on brand psychology at Club Cabana Panic →
+  <a href="https://clubcabanapanic.substack.com" target="_blank" rel="noopener">clubcabanapanic.substack.com</a>.
+  For access: <a href="mailto:devin@ohokbb.com">devin@ohokbb.com</a></p>
 </div>
 <script>
 const pw=document.getElementById('pw');
@@ -110,8 +116,7 @@ async function attempt(){
   }catch{err.textContent='Network error. Try again.';}
   btn.disabled=false;
 }
-btn.addEventListener('click',attempt);
-pw.addEventListener('keydown',e=>{if(e.key==='Enter')attempt();});
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();attempt();});
 pw.focus();
 </script>
 </body>

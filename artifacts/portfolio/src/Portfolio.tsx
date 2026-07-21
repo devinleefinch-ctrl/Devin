@@ -66,24 +66,43 @@ function Gate({ onUnlock }: { onUnlock: () => void }) {
   return (
     <div id="gate" role="dialog" aria-label="Password required" ref={gateRef}>
       <div className="inner">
-        <div className="art art-splash">
-          <img src={A('gate.png')} alt="OHOKBB — Betrayal" onError={removeParent} />
+        <div className="rule">
+          <span className="tag">DEVIN FINCH</span>
         </div>
+        <div className="big">Portfolio</div>
         <div className="ask">Insert Password:</div>
-        <input
-          id="gatepw"
-          ref={inputRef}
-          type="password"
-          autoComplete="off"
-          spellCheck={false}
-          aria-label="Password"
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') check();
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            check();
           }}
-        />
-        <button type="button" className="go" onClick={check}>
-          Enter&nbsp;→
-        </button>
+        >
+          <input
+            id="gatepw"
+            ref={inputRef}
+            type="password"
+            autoComplete="off"
+            spellCheck={false}
+            aria-label="Password"
+          />
+          <button type="submit" className="go">
+            Enter&nbsp;→
+          </button>
+        </form>
+        <p className="blurb">
+          Creative direction &amp; cultural strategy for founders, families,
+          and platforms that move culture. Polymarket. The Believe! Journal.
+          MAMA Magazine. Shane Gillis. Azealia Banks. Writing on brand
+          psychology at Club Cabana Panic →{' '}
+          <a
+            href="https://clubcabanapanic.substack.com"
+            target="_blank"
+            rel="noopener"
+          >
+            clubcabanapanic.substack.com
+          </a>
+          . For access: <a href="mailto:devin@ohokbb.com">devin@ohokbb.com</a>
+        </p>
       </div>
     </div>
   );
@@ -199,25 +218,37 @@ export default function Portfolio() {
           {/* HERO */}
           <section className="hero">
             <h1>
-              Sensational
-              <br />
               Creative
               <br />
               Direction
+              <br />
+              &amp; Cultural
+              <br />
+              Strategy
             </h1>
             <p className="strap">
-              Brand, editorial, video &amp; systems — built by hand, accelerated
-              by machine.
+              Brand worlds, editorial systems, and the behavioral psychology
+              that makes them land. Fifteen years, ten-plus national awards,
+              and a client list that runs from a $9B prediction market to the
+              DeVos family to the comedian who just broke comedy&rsquo;s
+              all-time attendance record.
             </p>
             <div className="meta">
               <div>
-                <b>Currently</b>Polymarket · MAMA · WILL Agency
+                <b>Recent</b>Polymarket · The Believe! Journal · MAMA
+              </div>
+              <div>
+                <b>Writing</b>
+                <a
+                  href="https://clubcabanapanic.substack.com"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Club Cabana Panic
+                </a>
               </div>
               <div>
                 <b>Awards</b>dotComm · MarCom · Hermes · AVA
-              </div>
-              <div>
-                <b>Base</b>Houston, Texas
               </div>
               <div>
                 <b>Status</b>Open to full-time &amp; select clients

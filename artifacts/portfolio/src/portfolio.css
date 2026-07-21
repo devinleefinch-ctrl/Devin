@@ -170,10 +170,10 @@ body.locked main, body.locked .sidebar{visibility:hidden}
 body.locked{overflow:hidden}
 
 
-/* gate art as full splash (replaces PORTFOLIO headline) */
-#gate .art.art-splash{width:min(480px,80vw);max-height:56vh;margin:0 auto;z-index:0}
-#gate .art.art-splash img{max-height:56vh}
-#gate .art.art-splash + .ask{margin-top:22px}
+/* gate blurb + hero meta links */
+#gate .blurb{font-family:var(--serif);font-size:15px;line-height:1.55;color:rgba(11,11,11,.78);max-width:54ch;margin:30px auto 0}
+#gate .blurb a{color:#0B0B0B;text-decoration:underline;text-underline-offset:3px}
+.hero .meta a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 
 /* natural image display — show the full artwork, never crop or upscale */
 .grid{align-items:start}
