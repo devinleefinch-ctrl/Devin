@@ -249,6 +249,16 @@ export default function Portfolio() {
                 </a>
               </div>
               <div>
+                <b>Video</b>
+                <a
+                  href="https://drive.google.com/drive/folders/1IcSdhEeH3RhlGMxR10b1eFev1KUhQ1fo?usp=sharing"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Full motion archive
+                </a>
+              </div>
+              <div>
                 <b>Awards</b>dotComm · MarCom · Hermes · AVA
               </div>
               <div>
