@@ -191,6 +191,7 @@ export default function Portfolio() {
             <a href="#ccp">Club Cabana Panic</a>
             <a href="#proxima">Proxima CRO</a>
             <a href="#blackmass">Column Bay / Black Mass</a>
+            <a href="#culture">Culture</a>
             <a href="#receipts">The Receipts</a>
           </nav>
           <div className="sb-links">
@@ -202,7 +203,7 @@ export default function Portfolio() {
             >
               LinkedIn
             </a>
-            <a href={A('Devin_Finch_Resume.docx')} download>
+            <a href={A('Devin_Finch_Resume.pdf')} download>
               Resume
             </a>
           </div>
@@ -754,6 +755,77 @@ export default function Portfolio() {
                 <span className="arrow">→</span>
               </a>
             </nav>
+          </section>
+
+          {/* ============ CULTURE ============ */}
+          <a
+            className="row p-lav"
+            href="#culture"
+            aria-label="Culture: Shane Gillis and Azealia Banks"
+          >
+            <span className="chip">Culture</span>
+            <span className="mq">
+              <span className="mq-inner">
+                <span>Culture — Shane Gillis &amp; Azealia Banks</span>
+                <span>Culture — Shane Gillis &amp; Azealia Banks</span>
+              </span>
+            </span>
+          </a>
+          <section className="case p-lav" id="culture">
+            <div className="kicker">
+              <em>Arena · Comedy + Music</em>
+              <em>Role · Poster &amp; Album Art</em>
+              <em>2023–Now</em>
+            </div>
+            <h2>Shane Gillis on the wall. Azealia Banks on the sleeve.</h2>
+            <p className="lede">
+              Culture work that left the feed: the show poster for Shane Gillis
+              at Smart Financial Centre, and the cover of Azealia Banks&rsquo;
+              second album, Zenzealia.
+            </p>
+            <p className="facts">
+              The Gillis poster went up for the December 9, 2023 date at Smart
+              Financial Centre — and picked up a like from Gillis himself. The
+              Zenzealia artwork ran as the album cover; the original hand-drawn
+              portrait sits alongside.{' '}
+              <b>Culture work, verified by the culture.</b>
+            </p>
+            <div className="grid g-hero">
+              <div className="slot">
+                <Ticks />
+                <img
+                  src={A('gillis-poster.jpg')}
+                  alt="Shane Gillis show poster — Smart Financial Centre, December 9, 2023"
+                  onError={removeSelf}
+                />
+              </div>
+            </div>
+            <p className="caption">
+              Shane Gillis — show poster · Smart Financial Centre · December 9,
+              2023 · liked by @shanemgillis.
+            </p>
+            <div className="grid g-2">
+              <div className="slot">
+                <Ticks />
+                <img
+                  src={A('zenzealia-cover.jpg')}
+                  alt="Zenzealia — Azealia Banks album cover"
+                  onError={removeSelf}
+                />
+              </div>
+              <div className="slot">
+                <Ticks />
+                <img
+                  src={A('zenzealia-illustration.jpg')}
+                  alt="Zenzealia — original portrait illustration"
+                  onError={removeSelf}
+                />
+              </div>
+            </div>
+            <p className="caption">
+              Zenzealia — cover art for Azealia Banks&rsquo; second album ·
+              final halftone cover and the original portrait.
+            </p>
           </section>
 
           {/* ============ RECEIPTS ============ */}
