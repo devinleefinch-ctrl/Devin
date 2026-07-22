@@ -804,7 +804,7 @@ export default function Portfolio() {
               <div className="slot">
                 <Ticks />
                 <img
-                  src={A('gillis-poster.jpg')}
+                  src={A('gillis-poster-wall.jpg')}
                   alt="Shane Gillis show poster — Smart Financial Centre, December 9, 2023"
                   onError={removeSelf}
                 />
