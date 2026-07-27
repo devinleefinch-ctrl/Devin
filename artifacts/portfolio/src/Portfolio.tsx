@@ -434,7 +434,8 @@ export default function Portfolio() {
             </div>
             <h2>A new visual world every quarter. A full asset system every week.</h2>
             <p className="lede">
-              Each quarter gets its own direction — Free Enterprise, then the
+              The DeVos family&rsquo;s 50th-anniversary media project. Each
+              quarter gets its own direction — Free Enterprise, then the
               PlayStation-memory AI series, now America 250 — and every article
               ships with covers, carousels, video, and a complete Substack asset
               package.
@@ -442,7 +443,8 @@ export default function Portfolio() {
             <p className="facts">
               Weekly cadence: editorial covers for the print edition, social
               carousels, short-form video, and per-article Substack packages —
-              all inside whichever world the quarter lives in.{' '}
+              all inside whichever world the quarter lives in. The numbers: 53%
+              email open rates and 165M earned-media reach (Fox News, Blaze).{' '}
               <b>Three themes deep and counting.</b>
             </p>
             <div className="grid g-3">
