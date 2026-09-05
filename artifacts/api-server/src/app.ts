@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 import pinoHttp from "pino-http";
 import router from "./routes";
 import { logger } from "./lib/logger";
-import { portfolioGateMiddleware } from "./middlewares/portfolio-gate";
+import { portfolioMiddleware } from "./middlewares/portfolio-gate";
 
 const app: Express = express();
 
@@ -56,10 +56,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", router);
+app.use("/api", (_req, res) => {
+  res.status(404).json({ error: "API route not found" });
+});
 
-// Portfolio gate — must come after /api so the auth endpoints are reachable.
-// Unauthenticated requests receive a standalone gate HTML page; the portfolio
-// bundle and assets are never sent to visitors without a valid session cookie.
-app.use("/", portfolioGateMiddleware());
+// Public portfolio — proxy to Vite in development and serve its build in production.
+app.use("/", portfolioMiddleware());
 
 export default app;

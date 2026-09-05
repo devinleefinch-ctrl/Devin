@@ -1,9 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 
 const A = (f: string) =>
   import.meta.env.BASE_URL + 'assets/' + encodeURIComponent(f);
-
-const API = (p: string) => import.meta.env.BASE_URL + 'api/' + p;
 
 function removeSelf(e: React.SyntheticEvent<HTMLElement>) {
   e.currentTarget.remove();
@@ -26,123 +24,17 @@ function Ticks() {
   );
 }
 
-function Gate({ onUnlock }: { onUnlock: () => void }) {
-  const inputRef = useRef<HTMLInputElement>(null);
-  const gateRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
-
-  async function check() {
-    const input = inputRef.current;
-    const gate = gateRef.current;
-    if (!input || !gate) return;
-    const v = input.value.trim();
-    if (!v) return;
-    let ok = false;
-    try {
-      const res = await fetch(API('portfolio/unlock'), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ password: v }),
-      });
-      ok = res.ok;
-    } catch {
-      ok = false;
-    }
-    if (ok) {
-      onUnlock();
-    } else {
-      gate.classList.remove('deny');
-      void gate.offsetWidth;
-      gate.classList.add('deny');
-      input.value = '';
-      input.focus();
-    }
-  }
-
-  return (
-    <div id="gate" role="dialog" aria-label="Password required" ref={gateRef}>
-      <div className="inner">
-        <div className="rule">
-          <span className="tag">DEVIN FINCH</span>
-        </div>
-        <div className="big">Portfolio</div>
-        <div className="ask">Insert Password:</div>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            check();
-          }}
-        >
-          <input
-            id="gatepw"
-            ref={inputRef}
-            type="password"
-            autoComplete="off"
-            spellCheck={false}
-            aria-label="Password"
-          />
-          <button type="submit" className="go">
-            Enter&nbsp;→
-          </button>
-        </form>
-        <p className="blurb">
-          Creative direction &amp; cultural strategy for founders, families,
-          and platforms that move culture. Polymarket. The Believe! Journal.
-          MAMA Magazine. Shane Gillis. Azealia Banks. Writing on brand
-          psychology at Club Cabana Panic →{' '}
-          <a
-            href="https://clubcabanapanic.substack.com"
-            target="_blank"
-            rel="noopener"
-          >
-            clubcabanapanic.substack.com
-          </a>
-          . For access: <a href="mailto:devin@ohokbb.com">devin@ohokbb.com</a>
-        </p>
-      </div>
-    </div>
-  );
-}
-
 export default function Portfolio() {
-  const [locked, setLocked] = useState(true);
-
-  // Ask the server whether this browser already holds a valid session.
+  // Images reflow the page as they load, so re-anchor deep links a few times
+  // while the layout settles.
   useEffect(() => {
-    let cancelled = false;
-    fetch(API('portfolio/session'), { credentials: 'include' })
-      .then((res) => (res.ok ? res.json() : { unlocked: false }))
-      .then((data: { unlocked?: boolean }) => {
-        if (!cancelled && data.unlocked) setLocked(false);
-      })
-      .catch(() => {
-        /* stay locked */
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  useEffect(() => {
-    document.body.classList.toggle('locked', locked);
-    return () => document.body.classList.remove('locked');
-  }, [locked]);
-
-  // Deep links: the anchor targets only exist after React renders, and
-  // images reflow the page as they load — so re-anchor a few times while
-  // the layout settles.
-  useEffect(() => {
-    if (locked || !window.location.hash) return;
+    if (!window.location.hash) return;
     const id = window.location.hash.slice(1);
     const go = () =>
       document.getElementById(id)?.scrollIntoView({ behavior: 'instant' });
     const timers = [200, 700, 1500].map((ms) => window.setTimeout(go, ms));
     return () => timers.forEach((t) => window.clearTimeout(t));
-  }, [locked]);
+  }, []);
 
   const tickerLine = (
     <p>
@@ -169,7 +61,6 @@ export default function Portfolio() {
 
   return (
     <>
-      {locked && <Gate onUnlock={() => setLocked(false)} />}
       <div className="shell">
         {/* ================= SIDEBAR ================= */}
         <aside className="sidebar">
