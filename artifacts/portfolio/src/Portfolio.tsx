@@ -86,7 +86,7 @@ export default function Portfolio() {
             <a href="#receipts">The Receipts</a>
           </nav>
           <div className="sb-links">
-            <a href="mailto:devin@ohokbb.com">Email</a>
+            <a href="mailto:devinleefinch@gmail.com">Email</a>
             <a
               href="https://www.linkedin.com/in/devin-finch-creativedirector"
               target="_blank"
@@ -854,8 +854,8 @@ export default function Portfolio() {
 
           {/* FOOTER */}
           <footer>
-            <a className="mail" href="mailto:devin@ohokbb.com">
-              devin@ohokbb.com
+            <a className="mail" href="mailto:devinleefinch@gmail.com">
+              devinleefinch@gmail.com
             </a>
             <div className="fine">
               <span>© 2026 Devin Finch · Houston, TX</span>
