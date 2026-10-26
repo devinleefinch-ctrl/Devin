@@ -33,7 +33,11 @@ export default function Portfolio() {
     const go = () =>
       document.getElementById(id)?.scrollIntoView({ behavior: 'instant' });
     const timers = [200, 700, 1500].map((ms) => window.setTimeout(go, ms));
-    return () => timers.forEach((t) => window.clearTimeout(t));
+    window.addEventListener('load', go, { once: true });
+    return () => {
+      timers.forEach((t) => window.clearTimeout(t));
+      window.removeEventListener('load', go);
+    };
   }, []);
 
   const tickerLine = (
@@ -79,6 +83,7 @@ export default function Portfolio() {
             <a href="#polymarket">Polymarket</a>
             <a href="#allthenticate">Allthenticate</a>
             <a href="#believe">Believe! Journal</a>
+            <a href="#bed-base">Bed &amp; Base</a>
             <a href="#ccp">Club Cabana Panic</a>
             <a href="#proxima">Proxima CRO</a>
             <a href="#blackmass">Column Bay / Black Mass</a>
@@ -417,6 +422,58 @@ export default function Portfolio() {
             <p className="caption">
               Quarterly directions: Free Enterprise → PlayStation AI → America
               250 (current). Weekly video + carousel output.
+            </p>
+          </section>
+
+          {/* ============ BED & BASE ============ */}
+          <a className="row p-peach" href="#bed-base" aria-label="Case: Bed & Base">
+            <span className="chip">Case</span>
+            <span className="mq">
+              <span className="mq-inner">
+                <span>Bed &amp; Base — Brand Identity</span>
+                <span>Bed &amp; Base — Brand Identity</span>
+              </span>
+            </span>
+          </a>
+          <section className="case p-peach" id="bed-base" aria-labelledby="bed-base-title">
+            <div className="kicker">
+              <em>Brand · Bed &amp; Base</em>
+              <em>Scope · Positioning + Visual Identity</em>
+            </div>
+            <h2 id="bed-base-title">Every hauler looks the same. We don&rsquo;t.</h2>
+            <p className="lede">
+              Different paths. Same base. A gravel-hauling identity with a
+              little more character.
+            </p>
+            <p className="facts">
+              A textured wordmark, a high-visibility color palette, and three
+              typographic voices give Bed &amp; Base an unmistakable identity.
+              The Chips — Flint, Sandy, Slate, and Rusty — bring personality
+              to the heavy lifting, with the system carried through to load
+              tickets and brand ephemera.
+            </p>
+            <div className="grid g-hero bed-base-artwork">
+              {[
+                ['01-logo.png', 'Bed & Base textured wordmark with yellow, red, pink, purple, and brown stripes'],
+                ['02-positioning-color.png', 'Bed & Base positioning and seven-color brand palette, with a colorful haul truck standing out from the fleet'],
+                ['03-typography.png', 'Bed & Base typography system: Ortica Angular, Ortica Linear, and Helvetica'],
+                ['04-chips-applications.png', 'The Chips characters Flint, Sandy, Slate, and Rusty, alongside a branded load ticket'],
+              ].map(([file, alt]) => (
+                <div className="slot" key={file}>
+                  <Ticks />
+                  <img
+                    src={A('bed-base') + '/' + file}
+                    alt={alt}
+                    width={1920}
+                    height={1080}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              ))}
+            </div>
+            <p className="caption">
+              Logo → positioning &amp; color → typography → The Chips &amp; applications.
             </p>
           </section>
 

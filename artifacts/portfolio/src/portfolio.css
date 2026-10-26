@@ -161,3 +161,6 @@ a:focus-visible{outline:2px solid var(--peach);outline-offset:3px}
 .saintsbar .slot:has(img){min-height:0}
 .slot.tall:has(img){min-height:0}
 .grid > :only-child{grid-column:1/-1}
+
+/* Keep every Bed & Base board complete at its original 16:9 ratio. */
+.bed-base-artwork .slot img{height:auto;object-fit:contain}
