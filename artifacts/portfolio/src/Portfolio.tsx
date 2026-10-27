@@ -84,6 +84,8 @@ export default function Portfolio() {
             <a href="#allthenticate">Allthenticate</a>
             <a href="#believe">Believe! Journal</a>
             <a href="#bed-base">Bed &amp; Base</a>
+            <a href="#deadweight">Deadweight</a>
+            <a href="#westmag">Westmag</a>
             <a href="#ccp">Club Cabana Panic</a>
             <a href="#proxima">Proxima CRO</a>
             <a href="#blackmass">Column Bay / Black Mass</a>
@@ -458,7 +460,7 @@ export default function Portfolio() {
                 ['02-positioning-color.png', 'Bed & Base positioning and seven-color brand palette, with a colorful haul truck standing out from the fleet'],
                 ['03-typography.png', 'Bed & Base typography system: Ortica Angular, Ortica Linear, and Helvetica'],
                 ['04-chips-applications.png', 'The Chips characters Flint, Sandy, Slate, and Rusty, alongside a branded load ticket'],
-              ].map(([file, alt]) => (
+              ].map(([file, alt, width, height]) => (
                 <div className="slot" key={file}>
                   <Ticks />
                   <img
@@ -474,6 +476,98 @@ export default function Portfolio() {
             </div>
             <p className="caption">
               Logo → positioning &amp; color → typography → The Chips &amp; applications.
+            </p>
+          </section>
+
+          {/* ============ DEADWEIGHT ============ */}
+          <a className="row p-red" href="#deadweight" aria-label="Case: Deadweight">
+            <span className="chip">Case</span>
+            <span className="mq"><span className="mq-inner">
+              <span>Deadweight — Everything Must Go.</span>
+              <span>Deadweight — Everything Must Go.</span>
+            </span></span>
+          </a>
+          <section className="case p-red" id="deadweight" aria-labelledby="deadweight-title">
+            <div className="kicker">
+              <em>Brand · Deadweight</em>
+              <em>Scope · Brand Strategy + Visual Identity + Art Direction</em>
+              <em>Houston, TX</em>
+            </div>
+            <h2 id="deadweight-title">Everything must go.</h2>
+            <p className="lede">A cleanout service with a brand built to do the heavy lifting.</p>
+            <p className="facts">
+              A bold, memorable identity for the business of clearing out unwanted things.
+              An arched wordmark, high-visibility color, and hand-drawn service pictograms
+              create a recognizable system across bags, packaging, tape, and customer
+              touchpoints. <b>Bag it. Book it. Bye.</b>
+            </p>
+            <div className="grid g-hero deadweight-artwork">
+              {[
+                ['01-identity.png', 'Deadweight arched yellow wordmark on an orange field', 1920, 1080],
+                ['02-brand-assets.jpeg', 'Deadweight brand assets and hand-drawn service icons', 1536, 864],
+                ['03-applications.jpeg', 'Deadweight packaging and physical applications', 1536, 864],
+                ['04-positioning.png', 'We remove what holds people back — Deadweight positioning', 1920, 1080],
+                ['05-lifestyle.jpeg', 'Branded cleanout bag in a suburban setting', 1536, 864],
+                ['06-typography.png', 'Deadweight typography reference system', 1920, 1080],
+                ['07-color.png', 'Deadweight signal orange and yellow color palette', 1920, 1080],
+                ['08-type-hierarchy.png', 'Deadweight typographic hierarchy', 1920, 1080],
+                ['09-layout-system.png', 'Deadweight layout and page system', 1920, 1080],
+              ].map(([file, alt, width, height]) => (
+                <div className="slot" key={file}>
+                  <Ticks />
+                  <img src={A('deadweight') + '/' + file} alt={String(alt)} width={Number(width)} height={Number(height)}
+                    loading="lazy" decoding="async"
+                    style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'contain' }} />
+                </div>
+              ))}
+            </div>
+            <p className="caption">Identity · Brand assets · Applications · Positioning · Real-world use · Typography · Color · System</p>
+          </section>
+
+          {/* ============ WESTMAG ============ */}
+          <a className="row p-ink" href="#westmag" aria-label="Case: Westmag">
+            <span className="chip">Case</span>
+            <span className="mq"><span className="mq-inner">
+              <span>Westmag — Big American. Small Motors.</span>
+              <span>Westmag — Big American. Small Motors.</span>
+            </span></span>
+          </a>
+          <section className="case p-ink" id="westmag" aria-labelledby="westmag-title">
+            <div className="kicker">
+              <em>Brand · Westmag</em>
+              <em>Scope · Art Direction + Digital + Brand Communications</em>
+              <em>Industrial Technology</em>
+            </div>
+            <h2 id="westmag-title">Big American. Small Motors.</h2>
+            <p className="lede">
+              A visual language for the machinery powering autonomous systems.
+            </p>
+            <p className="facts">
+              Westmag designs and manufactures drone motors and robot actuators
+              in America. The brand direction brings a rugged industrial sensibility
+              to precision engineering: hard-edged typography, electric orange,
+              technical silhouettes, archival manufacturing references, and
+              visceral close-ups of the products themselves. The work connects
+              a manufacturing story to the next generation of drones and robots.
+              {' '}<a href="https://www.westmag.com" target="_blank" rel="noopener noreferrer">View Westmag ↗</a>
+            </p>
+            <div className="grid g-hero westmag-artwork">
+              {[
+                ['01-brand-poster.jpg', 'Westmag Big American Small Motors industrial poster on weathered steel', 1206, 953],
+                ['02-digital-direction.jpg', 'Westmag motors website creative direction and industrial imagery', 1206, 2439],
+                ['03-drone-motors.jpg', 'Westmag drone motor page with illustrated aircraft silhouettes and technical specifications', 1206, 2377],
+                ['04-robot-actuators.jpg', 'Westmag robot actuator page with humanoid robot silhouettes and specifications', 1206, 2377],
+              ].map(([file, alt, width, height]) => (
+                <div className="slot" key={file}>
+                  <Ticks />
+                  <img src={A('westmag') + '/' + file} alt={String(alt)} width={Number(width)} height={Number(height)}
+                    loading="lazy" decoding="async"
+                    style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'contain' }} />
+                </div>
+              ))}
+            </div>
+            <p className="caption">
+              Industrial campaign concept · Digital visual direction · Drone motors · Robot actuators
             </p>
           </section>
 
