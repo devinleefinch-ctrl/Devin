@@ -460,7 +460,7 @@ export default function Portfolio() {
                 ['02-positioning-color.png', 'Bed & Base positioning and seven-color brand palette, with a colorful haul truck standing out from the fleet'],
                 ['03-typography.png', 'Bed & Base typography system: Ortica Angular, Ortica Linear, and Helvetica'],
                 ['04-chips-applications.png', 'The Chips characters Flint, Sandy, Slate, and Rusty, alongside a branded load ticket'],
-              ].map(([file, alt, width, height]) => (
+              ].map(([file, alt]) => (
                 <div className="slot" key={file}>
                   <Ticks />
                   <img
